@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Users home directory- This is for cross platform compatibility(So you can run this script on Windows on your local system)
+#Added cross platform compatibility for Windows users..
 WIN_USER_PATH=$(powershell.exe -Command "[System.Environment]::GetFolderPath('Desktop')" | tr -d '\r')
 USER_DESKTOP=$(wslpath "$WIN_USER_PATH")
 
