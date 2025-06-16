@@ -1,0 +1,1 @@
+This folder contains all the icons, images and js libraries used in the project.

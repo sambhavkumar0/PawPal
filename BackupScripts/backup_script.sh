@@ -27,3 +27,18 @@ echo "[$(date)] Backup completed to $BACKUP_DIR/$DATE" >> "$LOG_FILE"
 find "$BACKUP_DIR" -mindepth 1 -maxdepth 1 -type d -mtime +7 -exec rm -rf {} \; >> "$LOG_FILE"
 
 echo "Backup complete!"
+
+
+
+# Guys!! To use this script, you will need a linux terminal.
+#Just install Wsl (Windows Subsystem for Linux) and ubuntu then you can easily run this script and create log folders on your local system.
+# Open terminal and run "wsl --install".
+# Once Wsl is installed, open ubuntu terminal and run the following command:
+# "cd ~"
+# chmod +x backup_script.sh"
+# "./backup_script.sh"
+# This script will create a backup of your PawPal frontend project every day at 12:00 PM.
+# The backups will be stored in a folder named "PawPal/Backups" on your local system.
+# The script will also log all backup and cleanup activities in a file named "backup.log" in the same directory.
+# This script is designed to be run daily to ensure a comprehensive backup of your project.
+
