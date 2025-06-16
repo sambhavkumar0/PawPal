@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Users home directory- This is for cross platform compatibility(So you can run this script on Windows on your local system)
-USER_HOME="$HOME"
+WIN_USER_PATH=$(powershell.exe -Command "[System.Environment]::GetFolderPath('Desktop')" | tr -d '\r')
+USER_DESKTOP=$(wslpath "$WIN_USER_PATH")
+
 
 # Define paths relative to home
-SOURCE_DIR="$USER_HOME/PawPal/Frontend"
-BACKUP_DIR="$USER_HOME/PawPal/Backups"
-SCRIPT_DIR="$USER_HOME/PawPal/BackupScripts"
+SOURCE_DIR="$USER_DESKTOP/PawPal/Frontend"
+BACKUP_DIR="$USER_DESKTOP/PawPal/Backups"
+SCRIPT_DIR="$USER_DESKTOP/PawPal/BackupScripts"
 LOG_FILE="$SCRIPT_DIR/backup.log"
 DATE=$(date +'%Y-%m-%d_%H-%M-%S')
 

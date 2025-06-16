@@ -1,0 +1,4 @@
+cp: cannot stat '/mnt/c/Users/sambh/Desktop/PawPal/Frontend/logs': No such file or directory
+[Mon Jun 16 13:08:45 UTC 2025] Backup completed to /mnt/c/Users/sambh/Desktop/PawPal/Backups/2025-06-16_13-08-45
+cp: cannot stat '/mnt/c/Users/sambh/Desktop/PawPal/Frontend/logs': No such file or directory
+[Mon Jun 16 13:17:02 UTC 2025] Backup completed to /mnt/c/Users/sambh/Desktop/PawPal/Backups/2025-06-16_13-17-02
