@@ -23,8 +23,8 @@ cp -r "$SOURCE_DIR/logs" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 # Log success
 echo "[$(date)] Backup completed to $BACKUP_DIR/$DATE" >> "$LOG_FILE"
 
-# Clean up backups older than 7 days
-find "$BACKUP_DIR" -mindepth 1 -maxdepth 1 -type d -mtime +7 -exec rm -rf {} \; >> "$LOG_FILE"
+# Clean up backups older than 1 days
+find "$BACKUP_DIR" -mindepth 1 -maxdepth 1 -type d -mtime +1 -exec rm -rf {} \; >> "$LOG_FILE"
 
 echo "Backup complete!"
 
@@ -41,4 +41,14 @@ echo "Backup complete!"
 # The backups will be stored in a folder named "PawPal/Backups" on your local system.
 # The script will also log all backup and cleanup activities in a file named "backup.log" in the same directory.
 # This script is designed to be run daily to ensure a comprehensive backup of your project.
+
+
+
+#Added cron functionality to automatically run the script every day at 2:00 AM.
+# Open your terminal and run the following command:
+# "crontab -e"
+# Added the following line to the file:
+#minute hour day-of-month month week command
+# "0 2 * * * /bin/bash /path/to/your/script/backup_script.sh"
+
 
