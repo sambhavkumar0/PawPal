@@ -1,0 +1,38 @@
+Project,Epic Link,Story,Summary,Description,Labels,Issue Type
+PawPal,Frontend Development,User Interface - Authentication Module,Design Login Page UI,Create a clean and responsive login page design using HTML/CSS.,"frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Authentication Module,Design Signup Page UI,"Create the signup page with fields for name, email, password, etc.","frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Authentication Module,Implement form validation,"Client-side validation for email format, password strength, required fields.","frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Authentication Module,Integrate with backend login/signup API,Connect form submission to Spring Boot backend API and handle responses.,"frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Authentication Module,Display error/success messages,Show proper toast/alert messages for failed or successful login/signup.,"frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Authentication Module,Add loading states and redirection,Show loading spinner and redirect user upon successful authentication.,"frontend,auth,ui",Task
+PawPal,Frontend Development,User Interface - Pet Owner Dashboard,Design dashboard layout,Include navigation sidebar and top bar with user info.,"frontend,dashboard,ui",Task
+PawPal,Frontend Development,User Interface - Pet Owner Dashboard,Display upcoming appointments,Fetch and display upcoming bookings in a card or table layout.,"frontend,dashboard,ui",Task
+PawPal,Frontend Development,User Interface - Pet Owner Dashboard,Add quick access buttons,"Allow users to quickly access pet profiles, booking, and history.","frontend,dashboard,ui",Task
+PawPal,Frontend Development,User Interface - Pet Owner Dashboard,Show notifications/reminders,Integrate UI for alerts about appointments and care updates.,"frontend,dashboard,ui",Task
+PawPal,Frontend Development,User Interface - Pet Owner Dashboard,Make dashboard responsive,"Ensure layout works on phones, tablets, and desktops.","frontend,dashboard,ui",Task
+PawPal,Frontend Development,Booking Appointment Page,Create service selection UI,"Dropdowns or cards for services like vet visit, grooming, training.","frontend,booking,ui",Task
+PawPal,Frontend Development,Booking Appointment Page,Implement date & time picker,User-friendly calendar and time input components.,"frontend,booking,ui",Task
+PawPal,Frontend Development,Booking Appointment Page,Connect to availability API,Fetch real-time staff availability and show slots.,"frontend,booking,ui",Task
+PawPal,Frontend Development,Booking Appointment Page,Booking summary and confirmation page,Show all selected options and total cost.,"frontend,booking,ui",Task
+PawPal,Frontend Development,Booking Appointment Page,Display success/failure message,Show booking confirmation or error toast.,"frontend,booking,ui",Task
+PawPal,Frontend Development,Pet Profile Management UI,Create pet profile form,"Input fields for pet name, type, age, breed, medical needs.","frontend,pet-profile,ui",Task
+PawPal,Frontend Development,Pet Profile Management UI,Upload and display pet photo,Allow image upload and preview.,"frontend,pet-profile,ui",Task
+PawPal,Frontend Development,Pet Profile Management UI,List of user’s pets,Display cards/tables for all registered pets.,"frontend,pet-profile,ui",Task
+PawPal,Frontend Development,Pet Profile Management UI,Edit/Delete pet profile,Edit button shows form with pre-filled values. Include delete confirmation.,"frontend,pet-profile,ui",Task
+PawPal,Frontend Development,Staff Interface Pages,Build staff dashboard layout,Overview of upcoming appointments and stats.,"frontend,staff,dashboard",Task
+PawPal,Frontend Development,Staff Interface Pages,Booking management table,Staff can view and filter appointments.,"frontend,staff,dashboard",Task
+PawPal,Frontend Development,Staff Interface Pages,Appointment details view,Click on a booking to see full details.,"frontend,staff,dashboard",Task
+PawPal,Frontend Development,Staff Interface Pages,Set availability,Staff can input their available time slots.,"frontend,staff,dashboard",Task
+PawPal,Frontend Development,Staff Interface Pages,Optional: Add chat UI,Basic chat interface between pet owner and staff.,"frontend,staff,dashboard",Task
+PawPal,Frontend Development,UI Components and Styling,Create reusable button and card components,Create styled components with hover/focus states.,"frontend,ui,components",Task
+PawPal,Frontend Development,UI Components and Styling,Define global styles,"Fonts, colors, spacing guidelines using CSS variables or a framework.","frontend,ui,components",Task
+PawPal,Frontend Development,UI Components and Styling,Build header and footer,Consistent across all pages.,"frontend,ui,components",Task
+PawPal,Frontend Development,UI Components and Styling,Media queries for responsiveness,"Target different screen sizes (mobile, tablet, desktop).","frontend,ui,components",Task
+PawPal,Frontend Development,Error Handling & UX Enhancements,Design 404 error page,Custom design with link to go back or home.,"frontend,ui,ux",Task
+PawPal,Frontend Development,Error Handling & UX Enhancements,Implement loading spinners,Show loaders while API data is fetched.,"frontend,ui,ux",Task
+PawPal,Frontend Development,Error Handling & UX Enhancements,Toast alerts/modals,"Use for feedback, confirmations, and messages.","frontend,ui,ux",Task
+PawPal,Frontend Development,Error Handling & UX Enhancements,Improve accessibility,"ARIA roles, keyboard nav, alt tags, contrast ratios.","frontend,ui,ux",Task
+PawPal,Frontend Development,Testing & Optimization,Test responsiveness,Check all pages on different devices/browsers.,"frontend,testing,performance",Task
+PawPal,Frontend Development,Testing & Optimization,Lighthouse performance audit,Run Google Lighthouse and fix any performance issues.,"frontend,testing,performance",Task
+PawPal,Frontend Development,Testing & Optimization,Optimize images and assets,Compress large images and remove unused CSS/JS.,"frontend,testing,performance",Task
+PawPal,Frontend Development,Testing & Optimization,Fix layout/UI bugs,Collect and resolve reported UI issues.,"frontend,testing,performance",Task
