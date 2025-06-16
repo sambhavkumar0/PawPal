@@ -21,7 +21,7 @@ cp -r "$SOURCE_DIR/assets" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 cp -r "$SOURCE_DIR/logs" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 
 
-#backup added for all the static files and folders
+#backup added for all the static files
 cp -r "$SOURCE_DIR/html" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 cp -r "$SOURCE_DIR/css" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 cp -r "$SOURCE_DIR/js" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
