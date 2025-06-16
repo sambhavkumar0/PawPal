@@ -1,2 +1,312 @@
-/* Styles for services.css */
-body { font-family: Arial, sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+body {
+            background-color: #f9f9f9; /* Very light grey background for overall page */
+            padding-top: 70px; /* Space for fixed navbar */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cleaner, modern font */
+            color: #333; /* Dark grey default text color */
+        }
+
+        /* Navbar Styles (Light Theme, Consistent with Images) */
+        .navbar {
+            background-color: #fff; /* White background for navbar */
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+            padding: 0.75rem 1rem;
+        }
+        .navbar-brand {
+            color: #2c3e50 !important; /* Dark blue brand color */
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand .fas.fa-paw {
+            color: #7b68ee; /* Purple paw icon (as a consistent accent) */
+            margin-right: 8px;
+        }
+        .navbar-nav .nav-link {
+            color: #555 !important; /* Darker grey links */
+            transition: color 0.3s ease;
+            font-size: 1.0rem;
+            margin: 0 10px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #7b68ee !important; /* Purple hover color */
+        }
+        .navbar-nav .nav-item.active .nav-link {
+            color: #7b68ee !important;
+            font-weight: 500;
+        }
+
+        /* Navbar Buttons (Login/Sign Up - Consistent with Images) */
+        .btn-navbar {
+            padding: 8px 18px;
+            border-radius: 5px; /* Slightly rounded buttons */
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn-login {
+            background-color: transparent; /* Transparent background for Login */
+            border: 1px solid #7b68ee; /* Purple border */
+            color: #7b68ee; /* Purple text */
+        }
+        .btn-login:hover {
+            background-color: #7b68ee;
+            color: white;
+        }
+        .btn-signup {
+            background-color: #ffa500; /* Orange for Sign Up */
+            border: 1px solid #ffa500;
+            color: white;
+        }
+        .btn-signup:hover {
+            background-color: #ff8c00; /* Darker orange on hover */
+            border-color: #ff8c00;
+        }
+
+        /* Hero Section (Gradient Background from Image) */
+        .hero-section {
+            background: linear-gradient(to right, #4a76c0, #7b68ee); /* Blue to purple gradient */
+            color: white;
+            padding: 80px 0 60px;
+            text-align: left; /* Text aligns left in the image */
+            margin-bottom: 40px; /* Space before the next section */
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #ffffff; /* White text for heading */
+        }
+        .hero-section h1 span {
+            color: #ffa500; /* Orange for "Simplified" as seen in image */
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 600px; /* Constrain width of paragraph */
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #e0e0e0; /* Off-white for description */
+        }
+        .hero-section .hero-buttons .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 15px; /* Space between buttons */
+        }
+        .hero-section .hero-buttons .btn-book-appointment {
+            background-color: #ffa500; /* Orange button */
+            border: 1px solid #ffa500;
+            color: white;
+        }
+        .hero-section .hero-buttons .btn-book-appointment:hover {
+            background-color: #ff8c00;
+            border-color: #ff8c00;
+        }
+        .hero-section .hero-buttons .btn-learn-more {
+            background-color: transparent; /* Transparent button */
+            border: 1px solid white;
+            color: white;
+        }
+        .hero-section .hero-buttons .btn-learn-more:hover {
+            background-color: white;
+            color: #4a76c0; /* Blue text on hover */
+        }
+        .hero-section .hero-image-placeholder {
+            /* This is where you might place the dog images later */
+            height: 300px; /* Example height */
+            width: 100%;
+            background-color: rgba(255,255,255,0.1); /* Light overlay for placeholder */
+            border-radius: 50%; /* Circular placeholder as in image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* To contain images if added */
+        }
+        .hero-section .hero-image-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Headings (e.g., "Our Services", "Why Choose PawPal?") */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-heading h2 {
+            font-size: 2.5rem;
+            color: #4a76c0; /* Blue heading color */
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .section-heading p {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Search Bar Container (Moved outside hero section) */
+        .search-bar-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto; /* Centered with vertical margin */
+            display: flex;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #ddd; /* Light border */
+        }
+        .search-bar-container input[type="text"] {
+            flex-grow: 1;
+            border: none; /* Remove internal border */
+            padding: 12px 20px;
+            font-size: 1.05rem;
+            outline: none;
+        }
+        .search-bar-container button {
+            background-color: #007bff; /* Keep original blue for search button, or use a consistent accent */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: background-color 0.2s ease;
+        }
+        .search-bar-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Service Card Styles (Adjusted for Lighter Feel) */
+        .service-card {
+            background-color: #fff; /* White cards */
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid #eee; /* Very light border */
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .service-card .icon-circle {
+            background-color: #f0f8ff; /* Light blue for icon background */
+            color: #007bff; /* Standard Bootstrap blue for icons for now, can be customized */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            margin: 0 auto 15px;
+        }
+        /* Specific icon colors from image */
+        .service-card .fa-cut { color: #ffa500; } /* Orange for Grooming */
+        .service-card .fa-stethoscope { color: #28a745; } /* Green for Veterinary (assuming stethoscope is used for vet) */
+        .service-card .fa-home { color: #f39c12; } /* Orange/Yellow for Pet Sitting */
+        .service-card .fa-graduation-cap { color: #7b68ee; } /* Purple for Training */
+
+        .service-card h3 {
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .service-card p {
+            color: #777;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        .service-card .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        .service-card .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Modal specific styles (Adjusted for Light Theme Consistency) */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .modal-header {
+            background-color: #f9f9f9; /* Light modal header */
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+        }
+        .modal-header .close {
+            color: #777;
+            opacity: 0.8;
+            font-size: 1.8rem;
+        }
+        .modal-title {
+            font-weight: 500;
+            font-size: 1.4rem;
+        }
+        .modal-body .service-detail-info strong {
+            color: #2c3e50;
+            margin-right: 5px;
+        }
+        .modal-body .service-features li i {
+            color: #007bff;
+            list-style-type: none;
+        }
+        .modal-body .book-now-btn {
+            background-color: #ffa500; /* Consistent orange */
+            border-color: #ffa500;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            color: white;
+        }
+        .modal-body .book-now-btn:hover {
+            background-color: #ff8c00;
+            border-color: #ff8c00;
+        }
+        .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem;
+            justify-content: flex-end; /* Align buttons to the right */
+        }
+        .modal-footer .btn-secondary {
+            background-color: #e0e0e0;
+            color: #555;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        .modal-footer .btn-secondary:hover {
+            background-color: #ccc;
+        }
+
+        /* Footer styles (Adjusted for Light Theme) */
+        .footer {
+            background-color: #f9f9f9; /* Light footer */
+            color: #777;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        .footer a {
+            color: #007bff;
+        }

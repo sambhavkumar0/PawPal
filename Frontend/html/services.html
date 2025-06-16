@@ -1,12 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPal - Our Services</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/services.css">
-</head>
+
 <body>
-    <h1>Services Page</h1>
-    <script src="../js/validation.js" defer></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-paw"></i> PawPal
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="services.html">Services <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-navbar btn-login" href="login.html">
+                        Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-navbar btn-signup" href="signup.html">
+                        Sign Up
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h1>Your Pet's Care, <br><span>Simplified</span></h1>
+                    <p>Schedule grooming and vet appointments, browse available services, and stay connected with
+                        trusted pet care providers. All in one secure platform.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-book-appointment">
+                            <i class="fas fa-calendar-alt"></i> Book Appointment
+                        </a>
+                        <a href="#our-services-section" class="btn btn-learn-more">
+                            <i class="fas fa-play-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-5 d-none d-md-flex justify-content-center align-items-center">
+                    <div class="hero-image-placeholder">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-5">
+        <div class="search-bar-container">
+            <input type="text" id="serviceSearchInput" placeholder="Search for a service...">
+            <button type="button" id="serviceSearchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <section class="container mt-5" id="our-services-section">
+        <div class="section-heading">
+            <h2>Our Services</h2>
+            <p>Comprehensive pet care services available through our platform.</p>
+        </div>
+
+        <div class="row" id="serviceCardsContainer">
+            <div class="col-md-4" data-service-keywords="dog walking exercise outdoor">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <h3>Dog Walking</h3>
+                    <p>Daily walks tailored to your dog's energy level and needs, ensuring they get the exercise and
+                        fresh air they deserve.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="dog_walking">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="pet sitting in-home care vacation home">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>In-Home Pet Sitting</h3>
+                    <p>Comfortable care for your pets in their own familiar environment while you're away. Includes
+                        feeding, playtime, and cuddles.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="pet_sitting">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="pet grooming bath trim nails ears clean">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Professional Grooming</h3>
+                    <p>Full-service grooming for all breeds and sizes, including bathing, hair trimming, nail clipping,
+                        and ear cleaning.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="pet_grooming">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="vet appointments transport medical checkup health">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Veterinary Care</h3>
+                    <p>Complete veterinary services from routine checkups to emergency care.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="vet_appointments">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="pet training obedience commands behavior school">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Obedience Training</h3>
+                    <p>Positive reinforcement training sessions to help your pet learn good manners and essential
+                        commands for a harmonious home.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="pet_training">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="boarding daycare overnight stay temporary home">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>Boarding & Daycare</h3>
+                    <p>A safe, fun, and stimulating environment for your pet while you're at work or on vacation.
+                        Overnight and daily options.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="boarding_daycare">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="pet photography portraits memories photos">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3>Pet Photography</h3>
+                    <p>Capture your pet's unique personality with professional photo sessions. Cherish those adorable
+                        moments forever.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="pet_photography">Learn More</button>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-service-keywords="first aid cpr emergency health safety medical">
+                <div class="service-card">
+                    <div class="icon-circle">
+                        <i class="fas fa-medkit"></i>
+                    </div>
+                    <h3>Pet First Aid & CPR</h3>
+                    <p>Certified professionals offering emergency care for your pet, including basic first aid and
+                        life-saving CPR techniques.</p>
+                    <button type="button" class="btn btn-primary btn-block learn-more-btn" data-toggle="modal"
+                        data-target="#serviceDetailModal" data-service-id="pet_first_aid">Learn More</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PawPal. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                    Service</a></p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="serviceDetailModal" tabindex="-1" role="dialog"
+        aria-labelledby="serviceDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serviceDetailModalLabel">Service Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id="modalServiceTitle" class="text-center text-primary mb-3"></h3>
+                    <p id="modalServiceShortDescription" class="lead text-center mb-4"></p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="service-detail-info">
+                                <h4 class="mb-3">What's Included:</h4>
+                                <ul class="service-features" id="modalServiceFeatures">
+                                </ul>
+                                <p><strong>Pricing:</strong> <span id="modalServicePricing"></span></p>
+                                <p><strong>Typical Duration:</strong> <span id="modalServiceDuration"></span></p>
+                                <p><strong>Ideal For:</strong> <span id="modalServiceIdealFor"></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="service-detail-info">
+                        <h4 class="mb-3">Full Service Description:</h4>
+                        <p id="modalServiceLongDescription">
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a id="modalBookNowLink" href="dashboard-owner.html#book-service"
+                        class="btn btn-success book-now-btn">Book This Service Now!</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/services.js"></script>
 </body>
+
 </html>
