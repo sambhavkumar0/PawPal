@@ -20,6 +20,12 @@ mkdir -p "$BACKUP_DIR/$DATE"
 cp -r "$SOURCE_DIR/assets" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 cp -r "$SOURCE_DIR/logs" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
 
+
+#backup added for all the static files and folders
+cp -r "$SOURCE_DIR/html" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
+cp -r "$SOURCE_DIR/css" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
+cp -r "$SOURCE_DIR/js" "$BACKUP_DIR/$DATE/" 2>>"$LOG_FILE"
+
 # Log success
 echo "[$(date)] Backup completed to $BACKUP_DIR/$DATE" >> "$LOG_FILE"
 
