@@ -25,42 +25,26 @@
       <h2>Create Pet Profile</h2>
       <p class="subtitle">Give your pet the care they deserve 🐶🐾</p>
 
-      <form>
-        <div class="row">
-          <div class="col-md-6 form-group">
-            <i class="fa fa-paw form-icon"></i>
-            <input
-              type="text"
-              class="form-control with-icon"
-              placeholder="Pet Name"
-              required
-            />
-          </div>
-          <div class="col-md-6 form-group">
-            <i class="fa fa-calendar form-icon"></i>
-            <input type="date" class="form-control with-icon" required />
-          </div>
+    <form novalidate>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <i class="fa fa-paw form-icon"></i>
+          <input type="text" class="form-control with-icon" placeholder="Pet Name" required>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 form-group">
-            <i class="fa fa-venus-mars form-icon"></i>
-            <select class="form-select with-icon" required>
-              <option value="">Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Unknown</option>
-            </select>
-          </div>
-          <div class="col-md-6 form-group">
-            <i class="fa fa-dog form-icon"></i>
-            <input
-              type="text"
-              class="form-control with-icon"
-              placeholder="Breed"
-              required
-            />
-          </div>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <i class="fa fa-venus-mars form-icon"></i>
+          <select id="gender" class="form-select with-icon" required>
+            <option value="">Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="col-md-6 form-group">
+          <i class="fa fa-dog form-icon"></i>
+          <input type="text" class="form-control with-icon" placeholder="Breed" required>
         </div>
 
         <div class="form-group">
@@ -98,16 +82,16 @@
           <input type="file" class="form-control with-icon" required />
         </div>
 
-        <div class="form-group">
-          <i class="fa fa-stethoscope form-icon"></i>
-          <select class="form-select with-icon" required>
-            <option value="">Preferred Service</option>
-            <option>Grooming</option>
-            <option>Vet Checkup</option>
-            <option>Vaccination</option>
-            <option>Training</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <i class="fa fa-stethoscope form-icon"></i>
+        <select id="service" class="form-select with-icon" required>
+          <option value="">Preferred Service</option>
+          <option>Grooming</option>
+          <option>Vet Checkup</option>
+          <option>Vaccination</option>
+          <option>Training</option>
+        </select>
+      </div>
 
         <div class="form-group">
           <textarea
@@ -126,6 +110,7 @@
       </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/pet_profile_validation.js"></script>
+</body>
 </html>
