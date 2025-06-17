@@ -1,4 +1,14 @@
+
+function showBookingForm() {
+    const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+    bookingModal.show();
+}
+
+
 $(document).ready(function() {
+
+
+            
             const servicesData = {
                 "dog_walking": {
                     title: "Dog Walking Adventures",
@@ -151,6 +161,9 @@ $(document).ready(function() {
                 }
             };
             // --- Search Bar Functionality ---
+            
+
+
             function filterServices() {
                 const searchTerm = $('#serviceSearchInput').val().toLowerCase();
                 $('.col-md-4[data-service-keywords]').each(function() {
