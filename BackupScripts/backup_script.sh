@@ -57,4 +57,5 @@ echo "Backup complete!"
 #minute hour day-of-month month week command
 # "0 2 * * * /bin/bash /path/to/your/script/backup_script.sh"
 
-
+# dos2unix backup_script.sh 
+# If you're using Windows, convert the file to Unix format using this command.
