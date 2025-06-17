@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - PawPal Pet Care</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Visual Section -->
+      <div class="visual-side">
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+
+        <div class="visual-content">
+          <h1 class="visual-title">Join Our Pet Loving Community</h1>
+          <p class="visual-text">
+            Sign up today and get access to premium pet care services at your
+            fingertips.
+          </p>
+
+          <ul class="features">
+            <li>
+              <div class="feature-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <span>Easy appointment scheduling</span>
+            </li>
+            <li>
+              <div class="feature-icon">
+                <i class="fas fa-bell"></i>
+              </div>
+              <span>Automated reminders</span>
+            </li>
+            <li>
+              <div class="feature-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <span>Access to premium pet care providers</span>
+            </li>
+            <li>
+              <div class="feature-icon">
+                <i class="fas fa-history"></i>
+              </div>
+              <span>Pet health history tracking</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Form Section -->
+      <div class="form-side">
+        <a href="index.html" style="text-decoration: none; color: inherit">
+          <div class="logo-container">
+            <i class="fas fa-paw"></i>
+            <span>PawPal</span>
+          </div>
+        </a>
+
+        <h2 class="form-title">Create Your Account</h2>
+        <p class="form-subtitle">
+          Join thousands of pet owners who trust us with their furry friends
+        </p>
+
+        <form id="registrationForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <div class="input-with-icon">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                id="fullName"
+                class="form-control"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <div class="input-with-icon">
+              <i class="fas fa-phone"></i>
+              <input
+                type="tel"
+                id="phone"
+                class="form-control"
+                placeholder="(123) 456-7890"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Create a password"
+                required
+              />
+              <button type="button" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+                placeholder="Confirm your password"
+                required
+              />
+              <button type="button" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="terms">
+            <input type="checkbox" id="terms" required />
+            <label for="terms"
+              >I agree to the <a href="#">Terms</a> and
+              <a href="#">Privacy Policy</a></label
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+
+        <p class="login-link">
+          Already have an account? <a href="login.html">Log in</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Password visibility toggle
+      document.querySelectorAll(".password-toggle").forEach((button) => {
+        button.addEventListener("click", function () {
+          const input = this.previousElementSibling;
+          const icon = this.querySelector("i");
+
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

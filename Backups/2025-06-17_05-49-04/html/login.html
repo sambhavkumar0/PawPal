@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - PawPal Pet Care</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Visual Section -->
+      <div class="visual-side">
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+        <div class="paw-print">
+          <i class="fas fa-paw"></i>
+        </div>
+
+        <div class="visual-content">
+          <h1 class="visual-title">Welcome Back to PawPal</h1>
+          <p class="visual-text">We've missed you and your furry friends!</p>
+
+          <div class="pet-image">
+            <img
+              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Happy dog"
+            />
+          </div>
+
+          <p class="testimonial">
+            "PawPal has made managing my pets' care so much easier. The
+            reminders ensure I never miss an appointment!"
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Form Section -->
+      <div class="form-side">
+        <a href="index.html" style="text-decoration: none; color: inherit">
+          <div class="logo-container">
+            <i class="fas fa-paw"></i>
+            <span>PawPal</span>
+          </div>
+        </a>
+
+        <h2 class="form-title">Sign In to Your Account</h2>
+        <p class="form-subtitle">Welcome back! Please enter your details</p>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fas fa-envelope"></i>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-with-icon">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Enter your password"
+                required
+              />
+              <button type="button" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+
+        <p class="signup-link">
+          Don't have an account? <a href="signup.html">Sign up now</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Password visibility toggle
+      document.querySelectorAll(".password-toggle").forEach((button) => {
+        button.addEventListener("click", function () {
+          const input = this.previousElementSibling;
+          const icon = this.querySelector("i");
+
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+
+      // Form submission
+    </script>
+  </body>
+</html>
