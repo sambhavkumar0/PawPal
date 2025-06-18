@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PawPal Pet Care</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contact.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-2" href="index.html">
+                <i class="fas fa-paw me-2"></i>PawPal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary ms-2" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-2" href="signup.html">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold text-primary mb-4 fade-in-up">Get In Touch</h1>
+                    <p class="lead text-muted mb-5 fade-in-up">
+                        Have questions about our services? Need help with your booking?
+                        We're here to help you and your furry friends.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="contact-card text-center p-4 fade-in-up">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-phone fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Call Us</h5>
+                        <p class="text-muted mb-2">+1 (555) 123-PAWS</p>
+                        <p class="small text-muted">Available 24/7 for emergencies</p>
+                        <button class="btn btn-outline-primary btn-sm"
+                            onclick="window.location.href='tel:+15551234567'">
+                            <i class="fas fa-phone me-2"></i>Call Now
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card text-center p-4 fade-in-up">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-envelope fa-3x text-success"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Email Us</h5>
+                        <p class="text-muted mb-2">hello@pawpal.com</p>
+                        <p class="small text-muted">We'll respond within 2 hours</p>
+                        <button class="btn btn-outline-success btn-sm"
+                            onclick="window.location.href='mailto:hello@pawpal.com'">
+                            <i class="fas fa-envelope me-2"></i>Send Email
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-card text-center p-4 fade-in-up">
+                        <div class="contact-icon mb-3">
+                            <i class="fas fa-map-marker-alt fa-3x text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Visit Us</h5>
+                        <p class="text-muted mb-2">123 Pet Care Street<br>Pet City, PC 12345</p>
+                        <p class="small text-muted">Mon-Sun: 8AM - 8PM</p>
+                        <button class="btn btn-outline-warning btn-sm" onclick="openMap()">
+                            <i class="fas fa-map me-2"></i>Get Directions
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-card p-5 fade-in-up">
+                        <h3 class="text-center mb-4">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="booking">Booking Question</option>
+                                        <option value="service">Service Information</option>
+                                        <option value="complaint">Complaint</option>
+                                        <option value="compliment">Compliment</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required
+                                        placeholder="Tell us how we can help you..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label" for="newsletter">
+                                            Subscribe to our newsletter for pet care tips and updates
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="text-center mb-5 fade-in-up">Frequently Asked Questions</h3>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item fade-in-up">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    How do I book an appointment?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can book an appointment through our website by selecting your desired service,
+                                    choosing a date and time, and filling out the booking form. You'll receive a
+                                    confirmation
+                                    email within minutes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in-up">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    What if I need to cancel or reschedule?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can cancel or reschedule your appointment up to 24 hours in advance without any
+                                    fees.
+                                    Simply call us or use your online account to make changes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in-up">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Are your staff qualified and insured?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, all our care providers are fully qualified, licensed, and insured. We conduct
+                                    thorough
+                                    background checks and require ongoing training to ensure the highest standards of
+                                    care.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item fade-in-up">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    Do you offer emergency services?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we provide 24/7 emergency veterinary services. Call our emergency hotline at
+                                    +1 (555) 123-PAWS for immediate assistance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-paw me-2"></i>PawPal
+                    </h5>
+                    <p class="text-white-50">
+                        Your trusted partner in pet care. Connecting pet owners with quality care providers since 2024.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white-50 text-decoration-none">About</a></li>
+                        <li><a href="services.html" class="text-white-50 text-decoration-none">Services</a></li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="services.html" class="text-white-50 text-decoration-none">Grooming</a></li>
+                        <li><a href="services.html" class="text-white-50 text-decoration-none">Veterinary</a></li>
+                        <li><a href="services.html" class="text-white-50 text-decoration-none">Pet Sitting</a></li>
+                        <li><a href="services.html" class="text-white-50 text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <p class="text-white-50 mb-1">
+                        <i class="fas fa-phone me-2"></i>+1 (555) 123-PAWS
+                    </p>
+                    <p class="text-white-50 mb-1">
+                        <i class="fas fa-envelope me-2"></i>hello@pawpal.com
+                    </p>
+                    <p class="text-white-50">
+                        <i class="fas fa-clock me-2"></i>24/7 Available
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="text-white-50 mb-0">&copy; 2024 PawPal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+
+</html>

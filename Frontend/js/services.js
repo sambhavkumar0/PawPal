@@ -1,222 +1,459 @@
+$(document).ready(function() {
+    // Initialize services page
+    initServicesPage();
+    
+    // Set minimum date for booking as tomorrow
+    const bookingDateInput = $('#bookingDate');
+    if (bookingDateInput.length) {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        bookingDateInput.attr('min', tomorrow.toISOString().split('T')[0]);
+    }
 
-function showBookingForm() {
-    const bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-    bookingModal.show();
+    // Add animation to service cards on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationDelay = `${Math.random() * 0.3}s`;
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe service cards
+    const serviceCards = $('.service-detail-card');
+    serviceCards.each(function() {
+        observer.observe(this);
+    });
+});
+
+// Global variables
+let currentService = '';
+let selectedProviderId = '';
+
+function initServicesPage() {
+    // Add hover effects to service cards
+    $('.service-detail-card').hover(
+        function() {
+            $(this).addClass('card-hover');
+        },
+        function() {
+            $(this).removeClass('card-hover');
+        }
+    );
+
+    // Add click animations to buttons
+    $('.book-btn').on('click', function() {
+        $(this).addClass('btn-clicked');
+        setTimeout(() => {
+            $(this).removeClass('btn-clicked');
+        }, 200);
+    });
 }
 
+// Open simple booking modal
+function openBookingModal(serviceName) {
+    // Check if user is logged in
+    const currentUser = DataManager.getCurrentUser();
+    if (!currentUser) {
+        showAlert('Please log in to book an appointment.', 'warning');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+        return;
+    }
 
-$(document).ready(function() {
+    currentService = serviceName;
+    
+    // Update modal title
+    $('#modalServiceName').text(serviceName);
+    
+    // Reset form
+    $('#simpleBookingForm')[0].reset();
+    
+    // Set minimum date
+    const bookingDateInput = $('#bookingDate');
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    bookingDateInput.attr('min', tomorrow.toISOString().split('T')[0]);
+    
+    // Show modal with animation
+    const modal = new bootstrap.Modal(document.getElementById('simpleBookingModal'));
+    modal.show();
+    
+    // Add entrance animation
+    setTimeout(() => {
+        $('.modal-content').addClass('modal-enter');
+    }, 100);
+}
 
+// Open communication modal
+function openCommunicationModal(serviceName) {
+    // Check if user is logged in
+    const currentUser = DataManager.getCurrentUser();
+    if (!currentUser) {
+        showAlert('Please log in to contact care providers.', 'warning');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+        return;
+    }
 
-            
-            const servicesData = {
-                "dog_walking": {
-                    title: "Dog Walking Adventures",
-                    shortDescription: "Give your furry friend the exercise and fresh air they crave with our professional dog walking services.",
-                    longDescription: "Our experienced and passionate dog walkers provide personalized walks tailored to your dog's energy levels, breed, and specific needs. Whether it's a brisk jog, a leisurely stroll in the park, or a quick potty break, we ensure your dog enjoys their time outdoors. We use secure leashes and follow your preferred routes, always prioritizing your pet's safety and happiness. Choose from 30-minute, 60-minute, or custom walk durations.",
-                    // Changed to a more specific placeholder
-                    image: "https://via.placeholder.com/400x300/ADD8E6/000000?text=Dog+Walking+Image",
-                    pricing: "Starts from $25/hour",
-                    duration: "30-60 minutes per session",
-                    idealFor: "Energetic dogs, busy owners, socialization",
-                    features: [
-                        "Personalized routes and pace",
-                        "GPS tracking for walks (optional)",
-                        "Fresh water and treat after walk",
-                        "Waste disposal",
-                        "Updates with photos after each walk"
-                    ]
-                },
-                "pet_sitting": {
-                    title: "Comforting In-Home Pet Sitting",
-                    shortDescription: "Your pets stay happy and stress-free in the comfort of their own home while you're away.",
-                    longDescription: "Going on vacation or a business trip? Our in-home pet sitting service provides your beloved companions with the familiar comfort of their own environment. Our trusted sitters will visit your home multiple times a day (or provide overnight stays) to ensure feeding, fresh water, playtime, litter box cleaning, and any necessary medication administration. We also offer basic home care like mail collection and plant watering.",
-                    // Changed to a more specific placeholder
-                    image: "https://via.placeholder.com/400x300/F0F8FF/000000?text=Pet+Sitting+Image",
-                    pricing: "Starts from $50/day",
-                    duration: "Multiple daily visits or overnight stays",
-                    idealFor: "Pets who prefer home, multi-pet households",
-                    features: [
-                        "Feeding and fresh water replenishment",
-                        "Playtime and cuddles",
-                        "Litter box/cage cleaning",
-                        "Medication administration (if needed)",
-                        "Mail collection and plant watering"
-                    ]
-                },
-                "pet_grooming": {
-                    title: "Professional Pet Grooming",
-                    shortDescription: "Keep your pet looking and feeling their best with our comprehensive grooming services.",
-                    longDescription: "Our certified groomers provide a full range of services including breed-specific cuts, de-shedding treatments, nail trims, ear cleaning, and luxurious baths with hypoallergenic shampoos. We prioritize a stress-free experience for your pet, using gentle techniques and positive reinforcement. From a simple tidy-up to a full spa day, we'll have your pet looking show-ready!",
-                    // Changed to a more specific placeholder
-                    image: "https://via.placeholder.com/400x300/FFF8DC/000000?text=Grooming+Image",
-                    pricing: "Varies by breed & service, from $60",
-                    duration: "1-3 hours",
-                    idealFor: "All breeds, regular maintenance",
-                    features: [
-                        "Full bath & blow dry",
-                        "Haircut/trim (breed-specific options)",
-                        "Nail clipping & filing",
-                        "Ear cleaning & plucking",
-                        "Paw pad care"
-                    ]
-                },
-                "vet_appointments": {
-                    title: "Veterinary Care",
-                    shortDescription: "Complete veterinary services from routine checkups to emergency care.",
-                    longDescription: "We facilitate comprehensive veterinary services to ensure your pet's optimal health. This includes arranging routine check-ups, vaccinations, dental care, and connecting you with emergency care when needed. We aim to make pet healthcare seamless and accessible, prioritizing preventive care to keep your companion healthy and happy for years to come.",
-                    // Changed to a more specific placeholder
-                    image: "https://via.placeholder.com/400x300/E0FFFF/000000?text=Vet+Care+Image",
-                    pricing: "Varies by service",
-                    duration: "Dependent on service",
-                    idealFor: "All pets, health-conscious owners",
-                    features: [
-                        "Routine checkups & preventative care",
-                        "Vaccinations & parasite control",
-                        "Dental care coordination",
-                        "Emergency care guidance",
-                        "Specialist referrals"
-                    ]
-                },
-                // ... (rest of your services data with updated image URLs)
-                "cat_care": {
-                    title: "Specialized Feline Care",
-                    shortDescription: "Dedicated and compassionate care for your cats, ensuring their comfort and happiness.",
-                    longDescription: "Cats have unique needs, and our specialized cat care service caters to them perfectly. We provide daily visits that include feeding, fresh water, litter box cleaning, playtime with favorite toys, and plenty of gentle petting and affection. We understand feline behavior and strive to keep your cat's routine as normal as possible.",
-                    image: "https://via.placeholder.com/400x300/FFE4B5/000000?text=Cat+Care+Image",
-                    pricing: "Starts from $30/visit",
-                    duration: "30-45 minutes per visit",
-                    idealFor: "Cats who prefer their own home, anxious cats",
-                    features: [
-                        "Feeding and fresh water",
-                        "Litter box scooping and cleaning",
-                        "Playtime and enrichment",
-                        "Cuddles and attention",
-                        "Mail collection and plant watering (optional)"
-                    ]
-                },
-                "pet_training": {
-                    title: "Professional Pet Obedience Training",
-                    shortDescription: "Transform your pet's behavior with positive reinforcement training sessions.",
-                    longDescription: "Our certified trainers offer personalized obedience training programs for dogs of all ages and breeds. We focus on positive reinforcement techniques to teach essential commands like sit, stay, come, and leash manners. Whether you're dealing with puppy antics or adult dog challenges, we provide effective and humane solutions to build a stronger bond between you and your pet.",
-                    image: "https://via.placeholder.com/400x300/E6E6FA/000000?text=Training+Image",
-                    pricing: "Starts from $75/session",
-                    duration: "45-60 minutes per session",
-                    idealFor: "Puppies, new rescues, behavioral challenges",
-                    features: [
-                        "Basic and advanced obedience",
-                        "Leash training",
-                        "House-training support",
-                        "Problem behavior modification",
-                        "Owner coaching"
-                    ]
-                },
-                "boarding_daycare": {
-                    title: "Premium Boarding & Daycare",
-                    shortDescription: "A fun and safe temporary home for your pet when you're away.",
-                    longDescription: "Our state-of-the-art boarding and daycare facility offers a stimulating and comfortable environment for your beloved pet. With spacious play areas, constant supervision, and dedicated staff, your pet will enjoy their stay as much as you enjoy your time away. We offer both full-day daycare and overnight boarding options, including feeding, exercise, and social play.",
-                    image: "https://via.placeholder.com/400x300/F5F5DC/000000?text=Boarding+Daycare+Image",
-                    pricing: "Starts from $40/day",
-                    duration: "Full-day or overnight",
-                    idealFor: "Social pets, owners needing extended care",
-                    features: [
-                        "Supervised group play",
-                        "Individual kennels/suites (for boarding)",
-                        "Regular potty breaks",
-                        "Feeding according to schedule",
-                        "Administering medication"
-                    ]
-                },
-                "pet_photography": {
-                    title: "Professional Pet Photography",
-                    shortDescription: "Capture the unique personality and beauty of your furry family members.",
-                    longDescription: "Our talented pet photographers specialize in creating stunning portraits that truly reflect your pet's spirit. Whether it's action shots in the park, cozy studio portraits, or candid moments at home, we work patiently to capture those precious memories. We offer various packages including digital files, prints, and custom albums.",
-                    image: "https://via.placeholder.com/400x300/DDA0DD/000000?text=Photography+Image",
-                    pricing: "Starts from $150/session",
-                    duration: "1-2 hour session",
-                    idealFor: "Creating lasting memories, gifts",
-                    features: [
-                        "Outdoor or studio sessions",
-                        "High-resolution digital images",
-                        "Selection of prints/canvases",
-                        "Option for owner participation",
-                        "Online gallery for proofing"
-                    ]
-                },
-                "pet_first_aid": {
-                    title: "Pet First Aid & CPR Training",
-                    shortDescription: "Learn essential life-saving skills to help your pet in an emergency.",
-                    longDescription: "Be prepared for any pet emergency with our certified Pet First Aid & CPR courses. Taught by veterinary professionals, these hands-on workshops cover vital topics like choking, bleeding, poisoning, heatstroke, and basic CPR techniques. Gain the confidence and knowledge to act quickly and effectively when your pet needs it most.",
-                    image: "https://via.placeholder.com/400x300/FFB6C1/000000?text=First+Aid+Image",
-                    pricing: "$99/course",
-                    duration: "4-hour workshop",
-                    idealFor: "All pet owners, professional pet sitters",
-                    features: [
-                        "Recognizing emergencies",
-                        "Administering basic first aid",
-                        "Performing pet CPR",
-                        "Assembling a pet first aid kit",
-                        "Post-course certification"
-                    ]
-                }
-            };
-            // --- Search Bar Functionality ---
-            
+    currentService = serviceName;
+    $('#commServiceName').text(serviceName);
+    
+    // Load providers for this service
+    loadProvidersForService(serviceName);
+    
+    // Reset message form
+    $('#messageForm')[0].reset();
+    $('#messageSubject').val(`Inquiry about ${serviceName}`);
+    
+    // Show modal
+    const modal = new bootstrap.Modal(document.getElementById('communicationModal'));
+    modal.show();
+}
 
+function loadProvidersForService(serviceName) {
+    const providers = DataManager.getProviderByService(serviceName);
+    const providersList = $('#providersList');
+    
+    providersList.empty();
+    
+    if (providers.length === 0) {
+        providersList.append(`
+            <div class="text-center text-muted p-3">
+                <i class="fas fa-user-times fa-2x mb-2"></i>
+                <p>No providers available for this service</p>
+            </div>
+        `);
+        return;
+    }
+    
+    providers.forEach(provider => {
+        providersList.append(`
+            <div class="provider-card p-3 mb-3 border rounded ${selectedProviderId === provider.id ? 'selected' : ''}" 
+                 onclick="selectProvider('${provider.id}')">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-circle fa-2x text-primary me-3"></i>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-1">${provider.name}</h6>
+                        <p class="text-muted mb-1 small">${provider.specialization}</p>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-warning text-dark me-2">
+                                <i class="fas fa-star"></i> ${provider.rating}
+                            </span>
+                            <small class="text-muted">${provider.experience}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+}
 
-            function filterServices() {
-                const searchTerm = $('#serviceSearchInput').val().toLowerCase();
-                $('.col-md-4[data-service-keywords]').each(function() {
-                    const keywords = $(this).data('service-keywords');
-                    const serviceName = $(this).find('h3').text().toLowerCase();
-                    const serviceDescription = $(this).find('p').text().toLowerCase();
+function selectProvider(providerId) {
+    selectedProviderId = providerId;
+    $('#selectedProviderId').val(providerId);
+    
+    // Update UI
+    $('.provider-card').removeClass('selected');
+    $(`.provider-card[onclick="selectProvider('${providerId}')"]`).addClass('selected');
+}
 
-                    if (serviceName.includes(searchTerm) ||
-                        serviceDescription.includes(searchTerm) ||
-                        (keywords && keywords.includes(searchTerm))) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
-                });
-            }
+// Confirm booking
+function confirmBooking() {
+    const currentUser = DataManager.getCurrentUser();
+    if (!currentUser) {
+        showAlert('Please log in to book an appointment.', 'warning');
+        return;
+    }
 
-            $('#serviceSearchButton').on('click', filterServices);
-            $('#serviceSearchInput').on('keyup', filterServices);
+    const petName = $('#petName').val();
+    const petType = $('#petType').val();
+    const bookingDate = $('#bookingDate').val();
+    const bookingTime = $('#bookingTime').val();
+    const notes = $('#notes').val();
 
-            // --- Modal Dynamic Content Loading ---
-            $('#serviceDetailModal').on('show.bs.modal', function (event) {
-                const button = $(event.relatedTarget);
-                const serviceId = button.data('service-id');
-                const service = servicesData[serviceId];
+    // Basic validation
+    if (!petName || !petType || !bookingDate || !bookingTime) {
+        showAlert('Please fill in all required fields.', 'warning');
+        return;
+    }
 
-                const modal = $(this);
-                if (service) {
-                    modal.find('.modal-title').text(service.title);
-                    $('#modalServiceTitle').text(service.title);
-                    $('#modalServiceShortDescription').text(service.shortDescription);
-                    $('#modalServicePricing').text(service.pricing);
-                    $('#modalServiceDuration').text(service.duration);
-                    $('#modalServiceIdealFor').text(service.idealFor);
-                    $('#modalServiceLongDescription').text(service.longDescription);
+    // Get a provider for this service
+    const providers = DataManager.getProviderByService(currentService);
+    if (providers.length === 0) {
+        showAlert('No providers available for this service.', 'error');
+        return;
+    }
+    
+    const provider = providers[0]; // Select first available provider
 
-                    const featuresList = $('#modalServiceFeatures');
-                    featuresList.empty();
-                    service.features.forEach(feature => {
-                        featuresList.append(`<li><i class="fas fa-check-circle"></i> ${feature}</li>`);
-                    });
+    const $confirmButton = $('button[onclick="confirmBooking()"]');
+    const originalText = $confirmButton.html();
+    
+    // Show loading state
+    $confirmButton.html('<span class="spinner-border spinner-border-sm me-2"></span>Booking...');
+    $confirmButton.prop('disabled', true);
 
-                    $('#modalBookNowLink').attr('href', 'dashboard-owner.html#book-service?serviceId=' + serviceId);
+    // Simulate booking process
+    setTimeout(() => {
+        // Create booking
+        const booking = {
+            userId: currentUser.id,
+            serviceType: currentService,
+            petName: petName,
+            petType: petType,
+            appointmentDate: bookingDate,
+            appointmentTime: bookingTime,
+            status: 'pending',
+            providerId: provider.id,
+            providerName: provider.name,
+            notes: notes
+        };
+        
+        // Save booking
+        const savedBooking = DataManager.addBooking(booking);
+        
+        // Reset button
+        $confirmButton.html(originalText);
+        $confirmButton.prop('disabled', false);
 
-                } else {
-                    modal.find('.modal-title').text("Service Details Not Found");
-                    modal.find('.modal-body').html(`
-                        <h4 class="text-center text-danger">Service details could not be loaded.</h4>
-                        <p class="text-center">The requested service ID was not found. Please try again or select another service.</p>
-                    `);
-                    modal.find('.modal-footer').html(`
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    `);
-                }
-            });
+        // Format time for display
+        const timeFormatted = formatTime(bookingTime);
+        const dateFormatted = formatDate(bookingDate);
+
+        // Show success message
+        const successMessage = `✅ Booking Confirmed!\n\nService: ${currentService}\nPet: ${petName}\nDate: ${dateFormatted}\nTime: ${timeFormatted}\nProvider: ${provider.name}\n\nBooking ID: #${savedBooking.id.slice(-6)}\n\nYou'll receive a reminder 30 minutes before your appointment!`;
+        
+        showAlert(successMessage, 'success');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('simpleBookingModal'));
+        modal.hide();
+        
+        // Reset form
+        $('#simpleBookingForm')[0].reset();
+        
+        // Add success animation to the service card
+        const serviceCard = $(`.service-detail-card:contains("${currentService}")`);
+        serviceCard.addClass('booking-success');
+        setTimeout(() => {
+            serviceCard.removeClass('booking-success');
+        }, 2000);
+        
+    }, 1500);
+}
+
+// Send message to provider
+function sendMessage() {
+    const currentUser = DataManager.getCurrentUser();
+    if (!currentUser) {
+        showAlert('Please log in to send messages.', 'warning');
+        return;
+    }
+
+    const subject = $('#messageSubject').val();
+    const content = $('#messageContent').val();
+    const providerId = $('#selectedProviderId').val();
+
+    // Validation
+    if (!subject || !content) {
+        showAlert('Please fill in all fields.', 'warning');
+        return;
+    }
+
+    if (!providerId) {
+        showAlert('Please select a provider.', 'warning');
+        return;
+    }
+
+    const $sendButton = $('button[onclick="sendMessage()"]');
+    const originalText = $sendButton.html();
+    
+    // Show loading state
+    $sendButton.html('<span class="spinner-border spinner-border-sm me-2"></span>Sending...');
+    $sendButton.prop('disabled', true);
+
+    // Simulate sending message
+    setTimeout(() => {
+        // Create message
+        const message = {
+            senderId: currentUser.id,
+            receiverId: providerId,
+            content: `Subject: ${subject}\n\n${content}`,
+            type: 'text'
+        };
+        
+        // Save message
+        DataManager.addMessage(message);
+        
+        // Reset button
+        $sendButton.html(originalText);
+        $sendButton.prop('disabled', false);
+
+        // Show success message
+        showAlert('Message sent successfully! The provider will respond soon.', 'success');
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('communicationModal'));
+        modal.hide();
+        
+        // Reset form
+        $('#messageForm')[0].reset();
+        selectedProviderId = '';
+        
+    }, 1500);
+}
+
+// Format time for display
+function formatTime(time) {
+    const [hours, minutes] = time.split(':');
+    const hour = parseInt(hours);
+    if (hour === 12) {
+        return '12:00 PM';
+    } else if (hour > 12) {
+        return `${hour - 12}:00 PM`;
+    } else if (hour === 0) {
+        return '12:00 AM';
+    } else {
+        return `${hour}:00 AM`;
+    }
+}
+
+// Format date for display
+function formatDate(dateString) {
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+}
+
+// Show alert function
+function showAlert(message, type) {
+    // Remove existing alerts
+    $('.alert').remove();
+
+    // Create new alert
+    const alertDiv = $(`
+        <div class="alert alert-${type} alert-dismissible fade show position-fixed" 
+             style="top: 100px; right: 20px; z-index: 9999; max-width: 350px; white-space: pre-line;">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+
+    $('body').append(alertDiv);
+
+    // Auto remove after 7 seconds for longer messages
+    setTimeout(() => {
+        alertDiv.fadeOut(500, function() {
+            $(this).remove();
         });
+    }, 7000);
+}
+
+// Add smooth scrolling for navigation links
+$(document).on('click', 'a[href^="#"]', function(e) {
+    e.preventDefault();
+    const targetId = $(this).attr('href');
+    const targetSection = $(targetId);
+    if (targetSection.length) {
+        const offsetTop = targetSection.offset().top - 80;
+        $('html, body').animate({
+            scrollTop: offsetTop
+        }, 500);
+    }
+});
+
+// Add custom CSS for animations
+$('<style>')
+    .prop('type', 'text/css')
+    .html(`
+        .card-hover {
+            transform: translateY(-5px) scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-clicked {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+        
+        .modal-enter {
+            animation: modalEnter 0.3s ease-out;
+        }
+        
+        @keyframes modalEnter {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .provider-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .provider-card:hover {
+            background-color: #f8fafc;
+            transform: translateY(-2px);
+        }
+        
+        .provider-card.selected {
+            background-color: #eff6ff;
+            border-color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .booking-success {
+            animation: bookingSuccess 2s ease-in-out;
+        }
+        
+        @keyframes bookingSuccess {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        .animate-in {
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `)
+    .appendTo('head');

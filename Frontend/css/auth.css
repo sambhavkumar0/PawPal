@@ -1,0 +1,241 @@
+/* Authentication Pages Styles */
+
+.auth-body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    padding: 3rem;
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.auth-card.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.input-group {
+    margin-bottom: 0.5rem;
+}
+
+.input-group-text {
+    background: #f8fafc;
+    border: 2px solid #e5e7eb;
+    border-right: none;
+}
+
+.form-control {
+    border: 2px solid #e5e7eb;
+    border-left: none;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-control:focus + .input-group-text,
+.input-group .form-control:focus ~ .input-group-text {
+    border-color: var(--primary-color);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-login .btn {
+    border-radius: 10px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.social-login .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: all 0.3s ease;
+}
+
+.progress-bar.weak {
+    background-color: #ef4444;
+}
+
+.progress-bar.medium {
+    background-color: #f59e0b;
+}
+
+.progress-bar.strong {
+    background-color: #10b981;
+}
+
+/* Form Animations */
+.form-control, .form-select {
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    animation: inputFocus 0.3s ease;
+}
+
+@keyframes inputFocus {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Loading Animation */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success Animation */
+.auth-card.success {
+    animation: successPulse 1s ease-in-out;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 25px 80px rgba(16, 185, 129, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Error Animation */
+.form-control.error {
+    border-color: #ef4444;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .auth-section {
+        padding: 1rem 0;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+    
+    .social-login .btn {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        padding: 1.5rem;
+    }
+    
+    .auth-icon i {
+        font-size: 3rem !important;
+    }
+    
+    .btn-lg {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
