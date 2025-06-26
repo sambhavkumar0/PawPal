@@ -1,173 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up - PawPal Pet Care</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/auth.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
 
-<body class="auth-body">
+  <body class="auth-body">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary fs-2" href="index.html">
-                <i class="fas fa-paw me-2"></i>PawPal
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="index.html">Back to Home</a>
-            </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary fs-2" href="index.html">
+          <i class="fas fa-paw me-2"></i>PawPal
+        </a>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html">Back to Home</a>
         </div>
+      </div>
     </nav>
 
     <!-- Sign Up Section -->
     <section class="auth-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8">
-                    <div class="auth-card fade-in-up">
-                        <div class="auth-header text-center mb-4">
-                            <div class="auth-icon mb-3">
-                                <i class="fas fa-user-plus fa-4x text-primary"></i>
-                            </div>
-                            <h2 class="fw-bold text-primary">Join PawPal!</h2>
-                            <p class="text-muted">Create your account to get started</p>
-                        </div>
-
-                        <form id="signupForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-user text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control" id="firstName" required
-                                            placeholder="First name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-user text-muted"></i>
-                                        </span>
-                                        <input type="text" class="form-control" id="lastName" required
-                                            placeholder="Last name">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="signupEmail" class="form-label">Email Address</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-envelope text-muted"></i>
-                                        </span>
-                                        <input type="email" class="form-control" id="signupEmail" required
-                                            placeholder="Enter your email">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-phone text-muted"></i>
-                                        </span>
-                                        <input type="tel" class="form-control" id="phone" required
-                                            placeholder="Enter your phone number">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="signupPassword" class="form-label">Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-lock text-muted"></i>
-                                        </span>
-                                        <input type="password" class="form-control" id="signupPassword" required
-                                            placeholder="Create a password">
-                                        <button class="btn btn-outline-secondary" type="button"
-                                            id="toggleSignupPassword">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                    </div>
-                                    <div class="password-strength mt-2">
-                                        <div class="progress" style="height: 5px;">
-                                            <div class="progress-bar" id="passwordStrength" style="width: 0%"></div>
-                                        </div>
-                                        <small class="text-muted" id="passwordStrengthText">Password strength</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-lock text-muted"></i>
-                                        </span>
-                                        <input type="password" class="form-control" id="confirmPassword" required
-                                            placeholder="Confirm your password">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label for="userType" class="form-label">I am a</label>
-                                    <select class="form-select" id="userType" required>
-                                        <option value="">Select user type</option>
-                                        <option value="pet-owner">Pet Owner</option>
-                                        <option value="care-provider">Care Provider</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
-                                        <label class="form-check-label" for="agreeTerms">
-                                            I agree to the <a href="#" class="text-primary">Terms of Service</a>
-                                            and <a href="#" class="text-primary">Privacy Policy</a>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="newsletter">
-                                        <label class="form-check-label" for="newsletter">
-                                            Subscribe to our newsletter for pet care tips and updates
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
-                                        <i class="fas fa-user-plus me-2"></i>Create Account
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <div class="text-center">
-                            <p class="text-muted mb-3">Or sign up with</p>
-                            <div class="social-login d-flex gap-2 mb-4">
-                                <button class="btn btn-outline-danger flex-fill" onclick="socialLogin('google')">
-                                    <i class="fab fa-google me-2"></i>Google
-                                </button>
-                                <button class="btn btn-outline-primary flex-fill" onclick="socialLogin('facebook')">
-                                    <i class="fab fa-facebook-f me-2"></i>Facebook
-                                </button>
-                            </div>
-                            <p class="text-muted">
-                                Already have an account?
-                                <a href="login.html" class="text-primary text-decoration-none fw-bold">Sign In</a>
-                            </p>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-8">
+            <div class="auth-card fade-in-up">
+              <div class="auth-header text-center mb-4">
+                <div class="auth-icon mb-3">
+                  <i class="fas fa-user-plus fa-4x text-primary"></i>
                 </div>
+                <h2 class="fw-bold text-primary">Join PawPal!</h2>
+                <p class="text-muted">Create your account to get started</p>
+              </div>
+
+              <form id="signupForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-user text-muted"></i>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        required
+                        placeholder="First name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-user text-muted"></i>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        required
+                        placeholder="Last name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="signupEmail" class="form-label"
+                      >Email Address</label
+                    >
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-envelope text-muted"></i>
+                      </span>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="signupEmail"
+                        required
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-phone text-muted"></i>
+                      </span>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        required
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="signupPassword" class="form-label"
+                      >Password</label
+                    >
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-lock text-muted"></i>
+                      </span>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="signupPassword"
+                        required
+                        placeholder="Create a password"
+                      />
+                      <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="toggleSignupPassword"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                    <div class="password-strength mt-2">
+                      <div class="progress" style="height: 5px">
+                        <div
+                          class="progress-bar"
+                          id="passwordStrength"
+                          style="width: 0%"
+                        ></div>
+                      </div>
+                      <small class="text-muted" id="passwordStrengthText"
+                        >Password strength</small
+                      >
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="confirmPassword" class="form-label"
+                      >Confirm Password</label
+                    >
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="fas fa-lock text-muted"></i>
+                      </span>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                        required
+                        placeholder="Confirm your password"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label for="userType" class="form-label">I am a</label>
+                    <select class="form-select" id="userType" required>
+                      <option value="">Select user type</option>
+                      <option value="pet-owner">Pet Owner</option>
+                      <option value="care-provider">Care Provider</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="agreeTerms"
+                        required
+                      />
+                      <label class="form-check-label" for="agreeTerms">
+                        I agree to the
+                        <a href="#" class="text-primary">Terms of Service</a>
+                        and <a href="#" class="text-primary">Privacy Policy</a>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="newsletter"
+                      />
+                      <label class="form-check-label" for="newsletter">
+                        Subscribe to our newsletter for pet care tips and
+                        updates
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button
+                      type="submit"
+                      class="btn btn-primary w-100 btn-lg mb-3"
+                    >
+                      <i class="fas fa-user-plus me-2"></i>Create Account
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <div class="text-center">
+                <p class="text-muted mb-3">Or sign up with</p>
+                <div class="social-login d-flex gap-2 mb-4">
+                  <button
+                    class="btn btn-outline-danger flex-fill"
+                    onclick="socialLogin('google')"
+                  >
+                    <i class="fab fa-google me-2"></i>Google
+                  </button>
+                  <button
+                    class="btn btn-outline-primary flex-fill"
+                    onclick="socialLogin('facebook')"
+                  >
+                    <i class="fab fa-facebook-f me-2"></i>Facebook
+                  </button>
+                </div>
+                <p class="text-muted">
+                  Already have an account?
+                  <a
+                    href="login.html"
+                    class="text-primary text-decoration-none fw-bold"
+                    >Sign In</a
+                  >
+                </p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/data-manager.js"></script>
-</body>
-
+    <!-- <script src="../js/signup_validation.js"></script> -->
+  </body>
 </html>

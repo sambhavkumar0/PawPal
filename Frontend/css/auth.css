@@ -39,9 +39,12 @@
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -69,8 +72,8 @@
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-.form-control:focus + .input-group-text,
-.input-group .form-control:focus ~ .input-group-text {
+.form-control:focus+.input-group-text,
+.input-group .form-control:focus~.input-group-text {
     border-color: var(--primary-color);
 }
 
@@ -123,11 +126,13 @@
 }
 
 /* Form Animations */
-.form-control, .form-select {
+.form-control,
+.form-select {
     transition: all 0.3s ease;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
     animation: inputFocus 0.3s ease;
 }
 
@@ -135,9 +140,11 @@
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.02);
     }
+
     100% {
         transform: scale(1);
     }
@@ -147,6 +154,7 @@
 .btn.loading {
     pointer-events: none;
     opacity: 0.7;
+
 }
 
 .btn.loading::after {
@@ -177,10 +185,12 @@
         transform: scale(1);
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     }
+
     50% {
         transform: scale(1.02);
         box-shadow: 0 25px 80px rgba(16, 185, 129, 0.3);
     }
+
     100% {
         transform: scale(1);
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -194,12 +204,16 @@
 }
 
 @keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateX(0);
     }
+
     25% {
         transform: translateX(-5px);
     }
+
     75% {
         transform: translateX(5px);
     }
@@ -211,15 +225,15 @@
         padding: 2rem;
         margin: 1rem;
     }
-    
+
     .auth-section {
         padding: 1rem 0;
     }
-    
+
     .social-login {
         flex-direction: column;
     }
-    
+
     .social-login .btn {
         margin-bottom: 0.5rem;
     }
@@ -229,11 +243,11 @@
     .auth-card {
         padding: 1.5rem;
     }
-    
+
     .auth-icon i {
         font-size: 3rem !important;
     }
-    
+
     .btn-lg {
         padding: 0.875rem 1.5rem;
         font-size: 1rem;

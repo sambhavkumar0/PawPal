@@ -1,143 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - PawPal Pet Care</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/auth.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/auth.css" />
+  </head>
 
-<body class="auth-body">
+  <body class="auth-body">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary fs-2" href="index.html">
-                <i class="fas fa-paw me-2"></i>PawPal
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="index.html">Back to Home</a>
-            </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary fs-2" href="index.html">
+          <i class="fas fa-paw me-2"></i>PawPal
+        </a>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="index.html">Back to Home</a>
         </div>
+      </div>
     </nav>
 
     <!-- Login Section -->
     <section class="auth-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-7">
-                    <div class="auth-card fade-in-up">
-                        <div class="auth-header text-center mb-4">
-                            <div class="auth-icon mb-3">
-                                <i class="fas fa-user-circle fa-4x text-primary"></i>
-                            </div>
-                            <h2 class="fw-bold text-primary">Welcome Back!</h2>
-                            <p class="text-muted">Sign in to your PawPal account</p>
-                        </div>
-
-                        <form id="loginForm">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-envelope text-muted"></i>
-                                    </span>
-                                    <input type="email" class="form-control" id="email" required
-                                        placeholder="Enter your email">
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-lock text-muted"></i>
-                                    </span>
-                                    <input type="password" class="form-control" id="password" required
-                                        placeholder="Enter your password">
-                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="mb-3 d-flex justify-content-between align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rememberMe">
-                                    <label class="form-check-label" for="rememberMe">
-                                        Remember me
-                                    </label>
-                                </div>
-                                <a href="#" class="text-primary text-decoration-none" onclick="showForgotPassword()">
-                                    Forgot Password?
-                                </a>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
-                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
-                            </button>
-                        </form>
-
-                        <div class="text-center">
-                            <p class="text-muted mb-3">Or sign in with</p>
-                            <div class="social-login d-flex gap-2 mb-4">
-                                <button class="btn btn-outline-danger flex-fill" onclick="socialLogin('google')">
-                                    <i class="fab fa-google me-2"></i>Google
-                                </button>
-                                <button class="btn btn-outline-primary flex-fill" onclick="socialLogin('facebook')">
-                                    <i class="fab fa-facebook-f me-2"></i>Facebook
-                                </button>
-                            </div>
-                            <p class="text-muted">
-                                Don't have an account?
-                                <a href="signup.html" class="text-primary text-decoration-none fw-bold">Sign Up</a>
-                            </p>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7">
+            <div class="auth-card fade-in-up">
+              <div class="auth-header text-center mb-4">
+                <div class="auth-icon mb-3">
+                  <i class="fas fa-user-circle fa-4x text-primary"></i>
                 </div>
+                <h2 class="fw-bold text-primary">Welcome Back!</h2>
+                <p class="text-muted">Sign in to your PawPal account</p>
+              </div>
+
+              <form id="loginForm" novalidate>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      required
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      required
+                      placeholder="Enter your password"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="togglePassword"
+                    >
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  class="mb-3 d-flex justify-content-between align-items-center"
+                >
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="rememberMe"
+                    />
+                    <label class="form-check-label" for="rememberMe">
+                      Remember me
+                    </label>
+                  </div>
+                  <a
+                    href="#"
+                    class="text-primary text-decoration-none"
+                    onclick="showForgotPassword()"
+                  >
+                    Forgot Password?
+                  </a>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
+                  <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                </button>
+              </form>
+
+              <div class="text-center">
+                <p class="text-muted mb-3">Or sign in with</p>
+                <div class="social-login d-flex gap-2 mb-4">
+                  <button
+                    class="btn btn-outline-danger flex-fill"
+                    onclick="socialLogin('google')"
+                  >
+                    <i class="fab fa-google me-2"></i>Google
+                  </button>
+                  <button
+                    class="btn btn-outline-primary flex-fill"
+                    onclick="socialLogin('facebook')"
+                  >
+                    <i class="fab fa-facebook-f me-2"></i>Facebook
+                  </button>
+                </div>
+                <p class="text-muted">
+                  Don't have an account?
+                  <a
+                    href="signup.html"
+                    class="text-primary text-decoration-none fw-bold"
+                    >Sign Up</a
+                  >
+                </p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Forgot Password Modal -->
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="fas fa-key me-2 text-primary"></i>Reset Password
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="text-muted mb-3">
-                        Enter your email address and we'll send you a link to reset your password.
-                    </p>
-                    <form id="forgotPasswordForm">
-                        <div class="mb-3">
-                            <label for="resetEmail" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="resetEmail" required
-                                placeholder="Enter your email">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="sendResetLink()">
-                        <i class="fas fa-paper-plane me-2"></i>Send Reset Link
-                    </button>
-                </div>
-            </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="fas fa-key me-2 text-primary"></i>Reset Password
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-muted mb-3">
+              Enter your email address and we'll send you a link to reset your
+              password.
+            </p>
+            <form id="forgotPasswordForm">
+              <div class="mb-3">
+                <label for="resetEmail" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="resetEmail"
+                  required
+                  placeholder="Enter your email"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="sendResetLink()"
+            >
+              <i class="fas fa-paper-plane me-2"></i>Send Reset Link
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/data-manager.js"></script>
-</body>
-
+    <!-- <script src="../js/login_validation.js"></script> -->
+  </body>
 </html>
